@@ -1,4 +1,4 @@
-from ..param.base import Param
+from ..param import from_string as param_from_string
 from .base import ListProp, StringProp, props
 
 

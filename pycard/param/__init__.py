@@ -6,17 +6,18 @@ related to what they represents.
 
 """
 from ..tools.lexer import split_param
-from .base import params
+from .base import params, UnknownParam
 from .delivery_address import *
 from .encodings import QuotedPrintableParam
 
 
 def from_list(lst):
     name = lst[0]
-    param = params[name]
+    if name in params:
+        param = params[name]
+    else:
+        param = UnknownParam(*lst)
     return param
-    # value = lst[1] if len(lst) > 1 else None
-    # return Param(name, value)
 
 
 def from_string(string):
